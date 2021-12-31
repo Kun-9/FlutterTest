@@ -18,34 +18,35 @@ class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Appbar icon menu'),
-          centerTitle: true,
-          elevation: 0,
-        ),
-        body: Builder(
-          builder: (BuildContext ctx) {
-            return Center(
-              child: FlatButton(
-                child: Text(
-                  'show',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                color: Colors.red,
-                onPressed: () {
-                  Scaffold.of(ctx).showSnackBar(SnackBar(
-                    content: Text('hello'),
-                  ));
-                },
-              ),
-            );
-          },
-        ));
+      appBar: AppBar(
+        title: Text('Appbar icon menu'),
+        centerTitle: true,
+        elevation: 0,
+      ),
+      body: MySnackBar(),
+    );
   }
 }
 
-/*
-
- */
+class MySnackBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: RaisedButton(
+        child: Text('show'),
+        onPressed: () {
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text('hello',
+            textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            backgroundColor: Colors.teal,
+            duration: Duration(milliseconds: 1000),
+          ));
+        },
+      ),
+    );
+  }
+}
